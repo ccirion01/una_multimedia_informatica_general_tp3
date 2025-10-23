@@ -1,4 +1,4 @@
-// control sencillo del carousel: botones y autoplay
+// carousel: botones y autoplay
 document.addEventListener('DOMContentLoaded', ()=> {
   const carousel = document.getElementById('carousel');
   const prev = document.querySelector('.carousel-btn.prev');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
   function nextSlide(){ goTo(index+1) }
   function prevSlide(){ goTo(index-1) }
 
-  next.addEventListener('click', ()=>{debugger; nextSlide(); resetTimer(); });
+  next.addEventListener('click', ()=>{ nextSlide(); resetTimer(); });
   prev.addEventListener('click', ()=>{ prevSlide(); resetTimer(); });
 
   // autoplay

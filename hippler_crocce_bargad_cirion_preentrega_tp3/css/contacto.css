@@ -1,0 +1,4 @@
+/* borrar cuando tengamos el contenido */
+main {
+    height: calc(100vh - var(--header-h) - var(--footer-h));
+}
