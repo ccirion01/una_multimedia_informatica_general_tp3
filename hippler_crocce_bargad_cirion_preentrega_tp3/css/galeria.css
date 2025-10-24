@@ -1,73 +1,98 @@
-.gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-auto-rows: 300px;
-    grid-auto-flow: dense;
-    gap: 1rem;
-    padding: 1rem;
-    max-width: var(--max-width);
-    margin: 0 auto;
+  .galeria {
+    max-width: 1500px;
+    margin: 2rem auto;
+    padding: 0 0.5rem;
 }
 
-.gallery-item {
-    position: relative;
+.grid {
+    column-count: 1;
+    column-gap: 0.5rem;
+}
+
+/* más columnas en pantallas más grandes */
+@media (min-width: 480px) {
+    .grid {
+        column-count: 2;
+    }
+}
+
+@media (min-width: 768px) {
+    .grid {
+        column-count: 3;
+    }
+}
+
+@media (min-width: 1200px) {
+    .galeria {
+      max-width: 85vw;
+      padding: 0 1vw;
+    }
+
+    .grid {
+        column-count: 3;
+        padding: 0 1rem;
+    }
+}
+
+@media (min-width: 1900px) {
+    .grid {
+        /* column-count: 4; */
+        column-gap: 1.2rem;
+    }
+}
+
+.item {
+    break-inside: avoid;
+    margin: 2rem;
+    border-radius: 6px;
     overflow: hidden;
-    background: var(--muted);
-    border-radius: 4px;
-    transition: transform 0.3s ease;
+    display: block;
+    position: relative;
+    transition: transform 0.2s ease;
 }
 
-/* Items grandes ocupan 2x2 */
-.gallery-item.large {
-    grid-column: span 2;
-}
-
-/* Hacer que las imágenes/videos llenen su contenedor */
-.gallery-item img,
-.gallery-item video {
+.item img,
+.item video {
     width: 100%;
-    height: 100%;
+    height: auto;
+    display: block;
     object-fit: cover;
 }
 
-/* Sketches p5.js */
-.gallery-item.p5-sketch {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
+@media (hover: hover) {
+    .item:hover {
+        cursor: pointer;
+        transform: scale(1.01);
+    }
 }
 
-.gallery-item.p5-sketch iframe {
-    width: 500px;
-    max-width: 100%;
-    aspect-ratio: 1; /* proporción cuadrada */
+
+/* Embeds de páginas web */
+.item.web {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 6px;
+    position: relative;
+}
+
+.item.web .web-wrapper {
+    position: relative;
+    width: 100%;
     height: 100%;
-    border: 0;
 }
 
-/* Videos de YouTube */
-.gallery-item:not(.p5-sketch) iframe {
+.item.web iframe {
     width: 100%;
     height: 100%;
     border: none;
+    display: block;
+    transform: scale(1.05);
+    transform-origin: center;
 }
 
-/* Efecto hover simple */
-.gallery-item:hover {
-    transform: scale(1.02);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .gallery-container {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        grid-auto-rows: 250px;
-    }
-
-    .gallery-item.large,
-    .gallery-item.medium {
-        grid-column: span 1;
-        grid-row: span 1;
-    }
+.item.web .web-overlay {
+    position: absolute;
+    inset: 0;
+    display: none;
+    cursor: pointer;
 }
