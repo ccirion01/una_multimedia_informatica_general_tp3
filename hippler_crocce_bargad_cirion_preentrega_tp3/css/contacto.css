@@ -1,3 +1,58 @@
 main {
     min-height: calc(100vh - var(--header-h) - var(--footer-h));
+    padding-top: 2rem; /* Espacio superior */
+    padding-bottom: 2rem; /* Espacio inferior */
+}
+
+/* Estilos del Formulario */
+.contact-form {
+    max-width: 600px;
+    margin-top: 2rem;
+    padding: 20px;
+    border: 1px solid rgba(241, 241, 241, 0.2); /* Borde ligero usando var(--accent) */
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--accent);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(241, 241, 241, 0.4);
+    border-radius: 4px;
+    background-color: var(--muted); /* Fondo oscuro del sitio */
+    color: var(--accent); /* Texto claro */
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button[type="submit"] {
+    background-color: var(--accent);
+    color: var(--muted);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.contact-form button[type="submit"]:hover {
+    background-color: #ffffff; /* Un poco más claro al hacer hover */
 }
