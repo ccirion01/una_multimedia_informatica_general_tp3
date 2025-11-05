@@ -1,0 +1,14 @@
+main {
+    min-height: calc(100vh - var(--header-h) - var(--footer-h));
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.container h1 {
+    margin-bottom: 1.5rem;
+}
+
+.container ul {
+    list-style: square; 
+    margin-left: 20px;
+}

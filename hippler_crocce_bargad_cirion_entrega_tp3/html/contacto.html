@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/contacto.css"> 
+    <title>CATS. - Contacto</title>
+    <link rel="icon" href="../assets/img/cats_trans.png" type="image/x-icon">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../assets/img/cats_trans.png" alt="CATS Logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="nosotrxs.html">Nosotrxs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Contactanos</h1>
+        <p>Envianos un mensaje y te responderemos a la brevedad.</p>
+
+        <form action="#" method="POST" class="contact-form">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="asunto">Asunto:</label>
+                <input type="text" id="asunto" name="asunto">
+            </div>
+
+            <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+            </div>
+
+            <button type="submit">Enviar Mensaje</button>
+        </form>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <small>© 2025 — CATS — Portfolio</small>
+        </div>
+    </footer>
+</body>
+</html>
