@@ -1,20 +1,24 @@
 main {
     min-height: calc(100vh - var(--header-h) - var(--footer-h));
-    padding-top: 2rem; /* Espacio superior */
-    padding-bottom: 2rem; /* Espacio inferior */
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Estilos del Formulario */
 .contact-form {
+    width: 90%;
     max-width: 600px;
-    margin-top: 2rem;
+    margin: 0;
     padding: 20px;
-    border: 1px solid rgba(241, 241, 241, 0.2); /* Borde ligero usando var(--accent) */
+    border: 1px solid rgba(241, 241, 241, 0.2);
     border-radius: 8px;
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .contact-form label {
@@ -31,8 +35,8 @@ main {
     padding: 10px;
     border: 1px solid rgba(241, 241, 241, 0.4);
     border-radius: 4px;
-    background-color: var(--muted); /* Fondo oscuro del sitio */
-    color: var(--accent); /* Texto claro */
+    background-color: var(--muted);
+    color: var(--accent);
     font-family: inherit;
     font-size: 16px;
 }
@@ -54,5 +58,5 @@ main {
 }
 
 .contact-form button[type="submit"]:hover {
-    background-color: #ffffff; /* Un poco más claro al hacer hover */
+    background-color: #ffffff;
 }
