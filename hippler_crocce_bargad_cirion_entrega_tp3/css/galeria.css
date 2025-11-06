@@ -1,98 +1,119 @@
-  .galeria {
-    max-width: 1500px;
-    margin: 2rem auto;
-    padding: 0 0.5rem;
+.galeria {
+  max-width: 1500px;
+  margin: 2rem auto;
+  padding: 0 .5rem;
 }
 
 .grid {
-    column-count: 1;
-    column-gap: 0.5rem;
+  column-count: 1;
+  column-gap: .5rem;
 }
 
 /* más columnas en pantallas más grandes */
-@media (min-width: 480px) {
-    .grid {
-        column-count: 2;
-    }
-}
-
-@media (min-width: 768px) {
-    .grid {
-        column-count: 3;
-    }
-}
-
+@media (min-width: 480px) { .grid { column-count: 2; } }
+@media (min-width: 768px) { .grid { column-count: 3; } }
 @media (min-width: 1200px) {
-    .galeria {
-      max-width: 85vw;
-      padding: 0 1vw;
-    }
-
-    .grid {
-        column-count: 3;
-        padding: 0 1rem;
-    }
+  .galeria { max-width: 85vw; padding: 0 1vw; }
+  .grid { padding: 0 1rem; } /* column-count ya es 3 desde 768px */
 }
-
-@media (min-width: 1900px) {
-    .grid {
-        /* column-count: 4; */
-        column-gap: 1.2rem;
-    }
-}
+@media (min-width: 1900px) { .grid { column-gap: 1.2rem; } }
 
 .item {
-    break-inside: avoid;
-    margin: 2rem;
-    border-radius: 6px;
-    overflow: hidden;
-    display: block;
-    position: relative;
-    transition: transform 0.2s ease;
+  break-inside: avoid;
+  margin: 2rem;
+  border-radius: 6px;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  transition: transform .2s ease;
 }
 
+/* Medios dentro del item */
 .item img,
-.item video {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
+.item video,
+.item iframe {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: filter .35s ease;
 }
+
+/* Oscurecer medios en hover */
+.item:hover :is(img, video, iframe) { filter: brightness(.55); }
 
 @media (hover: hover) {
-    .item:hover {
-        cursor: pointer;
-        transform: scale(1.01);
-    }
+  .item:hover { cursor: pointer; transform: scale(1.01); }
 }
-
 
 /* Embeds de páginas web */
-.item.web {
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    border-radius: 6px;
-    position: relative;
-}
-
-.item.web .web-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
+.item.web { aspect-ratio: 1 / 1; }
+.item.web .web-wrapper { position: relative; width: 100%; height: 100%; }
 .item.web iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
-    transform: scale(1.05);
-    transform-origin: center;
+  width: 100%; height: 100%;
+  border: none; display: block;
+  transform: scale(1.05);
+  transform-origin: center;
+}
+.item.web .web-overlay { position: absolute; inset: 0; display: none; cursor: pointer; }
+
+/* Degrade desde abajo */
+.item::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to top,
+              rgba(0,0,0,.65) 0%,
+              rgba(0,0,0,.45) 30%,
+              rgba(0,0,0,0) 65%);
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
 }
 
-.item.web .web-overlay {
-    position: absolute;
-    inset: 0;
-    display: none;
-    cursor: pointer;
+/* Caja de texto */
+.item figcaption {
+  position: absolute;
+  left: 10%; right: 10%; bottom: 12px;
+  color: #fff;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .4s ease, transform .4s ease;
+  backdrop-filter: blur(2px);
+  text-align: center;
+  z-index: 2;
 }
+
+/* Título y meta usando data-attrs */
+.item figcaption::before {
+  content: attr(data-title);
+  display: block;
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  letter-spacing: .02em;
+}
+.item figcaption::after {
+  content: attr(data-meta);
+  display: block;
+  margin-top: 4px;
+  font-size: clamp(.78rem, .95vw, .9rem);
+  letter-spacing: .04em;
+  opacity: .9;
+  font-style: italic;
+}
+
+/* Estado hover/focus-visible */
+.item:hover::after,
+.item:focus-within::after { opacity: 1; }
+.item:hover figcaption,
+.item:focus-within figcaption { opacity: 1; transform: translateY(0); }
+
+/* Accesibilidad: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .item::after, .item figcaption { transition: none; }
+}
+
+/* Orden de capas en items “web” */
+.item.web .web-overlay { z-index: 3; }
+.item.web figcaption { z-index: 2; }
+.item.web::after { z-index: 1; }
