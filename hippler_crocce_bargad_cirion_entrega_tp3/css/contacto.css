@@ -42,6 +42,7 @@ main {
 }
 
 .contact-form textarea {
+    height: clamp(100px, 18vh, 80px);
     resize: vertical;
 }
 
